@@ -1,13 +1,24 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
-const plantSchema = newschema({
+const plantSchema = new Schema({
     name: {
         type: String,
         required: true,
     },
-    media: {
+    photos: {
         type: [String]
+    },
+    selectedPhoto: {
+        type: String
+    },
+    userId: { 
+        type: String
+    },
+    type: { // plant.type 
+        type: String
     }
+
 }, { timestamps: true })
 
-module.exports = mognoose.model('Plants', plantSchema);
+module.exports = mongoose.model('Plants', plantSchema);

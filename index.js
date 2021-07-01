@@ -3,14 +3,17 @@ const express = require('express'),
     app = express(),
     http = require('http'),
     cors = require('cors'),
-    constants = require('./config/config');
+    constants = require('./config/config'),
+    db = require('./config/db');
 
+db.connect(constants.api.database);
 app.use(cors());
+app.use(express.json());
 let routes = require('./routes/routes');
 routes(app);
 
 app.use((req, res, next) => {
-    res.send(400);
+    return res.status(400)
 })
 
 const server = http.createServer(app);

@@ -14,6 +14,7 @@ module.exports = (schemaToUse) => {
     try{
       const route = req.route.path;
       const method = req.method.toLowerCase();
+			// console.log({route,method})
       if (_.has(Schema, method) && _.has(Schema[method], route)) {
         // get schema for the current route
         const _schema = _.get(Schema[method], route);
