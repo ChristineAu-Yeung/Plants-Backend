@@ -1,6 +1,7 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const constants = require('../config/config')
+
 exports.login = async (req, res, next) => {
 	const { email, password } = req.body;
 	// decrypting an encrypted password
@@ -27,7 +28,7 @@ exports.authenticate = async (req, res, next) => {
 	}
 }
 
-exports.signup = async (req, res, next) => {
+exports.signUp = async (req, res, next) => {
 	const { name, email, password } = req.body;
 	const foundUser = await User.findOne(req.body); // <== User.findOne is a Promise 
 	if (foundUser) return res.status(400);
